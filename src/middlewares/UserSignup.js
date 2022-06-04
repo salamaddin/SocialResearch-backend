@@ -16,9 +16,9 @@ route.post('/', async (req,res)=>{
     
     try{
         const userExist = await UserModel.findOne({email:email});
-    
+        
         if(userExist){
-            return res.status(422).json({success: false, error: "Email already exist"});
+            return res.status(200).json({success: false, error: "Email already exist"});
         }
 
         const doc=new UserModel(user)
