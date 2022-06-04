@@ -24,7 +24,7 @@ route.post('/', async (req,res)=>{
         const doc=new UserModel(user)
         await doc.save()
 
-        res.status(200).json({success: true, message: "user registered successful"});
+        res.status(200).json({success: true, message: "user registered successful", user});
 
     }catch(err){
         res.status(500).json({ success: false, error: 'falied to register'});
