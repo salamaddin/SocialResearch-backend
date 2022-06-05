@@ -7,5 +7,7 @@ app.use(cors())
 
 app.use('/signup', require('../middlewares/UserSignup'))
 app.use('/login', require('../middlewares/UserLogin'))
+app.use('/post',require('../middlewares/UserPost'))
+app.use('/activeresearch', require('../middlewares/activeResearch'))
 
 module.exports = app;

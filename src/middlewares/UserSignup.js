@@ -5,9 +5,9 @@ const UserModel=require('../models/UserModel')
 route.post('/', async (req,res)=>{
     const user={}
     const {name,email,password}=req.body
-    user._id=email,
-    user.name=name,
-    user.email=email,
+    user._id=email
+    user.name=name
+    user.email=email
     user.password=password
 
     if (password.length < 6) {
