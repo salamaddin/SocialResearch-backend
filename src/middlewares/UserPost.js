@@ -4,7 +4,7 @@ const UserModel=require('../models/UserModel')
 const PostCount = require('../models/PostCount')
 
 route.post('/', async (req,res)=>{
-    const {email,post}=req.body
+    const {email,data}=req.body
 
     try{
         const user = await UserModel.findOne({email:email});
@@ -12,16 +12,15 @@ route.post('/', async (req,res)=>{
 
          const count = postcount.count;
         const newCount = count + 1
-        post.id= newCount
+        data.id= newCount
         
-
-        user.posts.push(post)
+        user.posts.push(data)
         await  UserModel.findByIdAndUpdate(user._id,user);
         await PostCount.findByIdAndUpdate(postcount._id,{count: newCount}); //update post count
         res.status(200).json({success: true, message: "post success", user});
 
     }catch(err){
-        res.status(500).json({ success: false, error: 'falied to post'});
+        res.json({ success: false, error: 'falied to post'});
         console.log(err);
     }
 })
