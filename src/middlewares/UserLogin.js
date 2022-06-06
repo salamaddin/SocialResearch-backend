@@ -8,7 +8,7 @@ route.post('/', async (req,res)=>{
         const {email,password}=req.body
       const user = await UserModel.findOne({ email, password })
       if (!user) {
-        res.status(401).json({
+        res.json({
           success: false,
           message: "Login not successful",
           error: "User not found",
@@ -21,7 +21,7 @@ route.post('/', async (req,res)=>{
         })
       }
     } catch (error) {
-      res.status(400).json({
+      res.json({
         success: false,
         message: "An error occurred",
         error: error.message,

@@ -11,7 +11,7 @@ route.post('/', async (req,res)=>{
     user.password=password
 
     if (password.length < 6) {
-        return res.status(400).json({ message: "Password less than 6 characters" })
+        return res.json({ message: "Password less than 6 characters" })
       }
     
     try{
@@ -27,7 +27,7 @@ route.post('/', async (req,res)=>{
         res.status(200).json({success: true, message: "user registered successful", user});
 
     }catch(err){
-        res.status(500).json({ success: false, error: 'falied to register'});
+        res.json({ success: false, error: 'falied to register'});
         console.log(err);
     }
 })

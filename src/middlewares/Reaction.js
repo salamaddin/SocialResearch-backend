@@ -13,10 +13,10 @@ const usersort = (users) => {
 }
 route.post('/', async (req,res)=>{
 
-    const {email,id,action,comment}=req.body
+    const {email,id,action,comment,user_id}=req.body
     
 
-    const user = await UserModel.findOne({email:email});
+    const user = await UserModel.findOne({email:user_id});
 
     try{
         let post={};
@@ -56,7 +56,7 @@ route.post('/', async (req,res)=>{
         res.status(200).json({success: true, message: "active Research success", user});
 
     }catch(err){
-        res.status(500).json({ success: false, error: 'falied to post'});
+        res.json({ success: false, error: 'falied to post'});
         
         console.log(err);
     }
